@@ -133,7 +133,7 @@ function handleClick(evt) {
   if (isFilled) {
     return endGame("Tie!");
   }
-  
+
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = (currPlayer === 1) ? 2 : 1;
@@ -158,7 +158,8 @@ function checkForWin() {
   }
 
   // TODO: read and understand this code. Add comments to help you.
-
+  // Checks the different ways to win the game: horizontal or vertical or diagonal. 
+  // Finds the winner only by checking each win possibility as needed. 
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       const horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
