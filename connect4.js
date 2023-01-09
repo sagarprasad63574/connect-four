@@ -18,7 +18,7 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
   for (let i = 0; i < HEIGHT; i++) {
-    board[i] = new Array(WIDTH);
+    board.push(Array.from({ length: WIDTH }));
   }
 }
 
@@ -102,7 +102,7 @@ function placeInTable(y, x) {
 
 function endGame(msg) {
   // TODO: pop up alert message
-  alert("Player " + currPlayer + " has WON!");
+  alert(msg);
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -129,14 +129,11 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  const isFilled = board.every((value) => {
-    console.log(value.length);
-  });
-
+  const isFilled = board.every(row => row.every(cell => cell));
   if (isFilled) {
-    endGame();
+    return endGame("Tie!");
   }
-
+  
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   currPlayer = (currPlayer === 1) ? 2 : 1;
